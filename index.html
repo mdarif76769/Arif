@@ -1,3 +1,103 @@
+<style>
+    /* Login Modal Styles */
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 2000; 
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        background-color: rgba(0,0,0,0.6);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+        position: relative;
+    }
+
+    .close-btn {
+        position: absolute;
+        right: 15px; top: 10px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .social-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: white;
+        cursor: pointer;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+    .gmail-btn:hover { background: #f1f1f1; }
+    .phone-btn { background: #2563eb; color: white; border: none; }
+    .phone-btn:hover { background: #1d4ed8; }
+
+    .divider { margin: 20px 0; border-bottom: 1px solid #ddd; position: relative; }
+    .divider span { background: white; padding: 0 10px; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); color: #888; }
+</style>
+
+<nav>
+    <div class="logo">আরিফ প্রো</div>
+    <div class="menu">
+        <a href="#" onclick="openModal()" class="btn" style="padding: 8px 20px; font-size: 14px;">লগইন করুন</a>
+    </div>
+</nav>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2>ফিরে আসায় স্বাগতম!</h2>
+        <p style="margin-bottom: 20px;">আপনার অ্যাকাউন্টটি লগইন করুন</p>
+
+        <button class="social-btn gmail-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" width="20" alt="G">
+            Gmail দিয়ে লগইন করুন
+        </button>
+
+        <div class="divider"><span>অথবা</span></div>
+
+        <button class="social-btn phone-btn">
+            ফোন নম্বর দিয়ে লগইন
+        </button>
+        
+        <p style="margin-top: 15px; font-size: 14px;">নতুন ইউজার? <a href="#" style="color: #2563eb;">রেজিস্ট্রেশন করুন</a></p>
+    </div>
+</div>
+
+<script>
+    function openModal() {
+        document.getElementById("loginModal").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("loginModal").style.display = "none";
+    }
+
+    // উইন্ডোর বাইরে ক্লিক করলে মডেল বন্ধ হবে
+    window.onclick = function(event) {
+        let modal = document.getElementById("loginModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
