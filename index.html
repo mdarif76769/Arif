@@ -3,6 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULTRA-OS 100+ MEGA TOOLBOX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --neon: #00ff88; --blue: #00d2ff; --bg: #010409; --card: #0d1117; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; padding: 15px; }
+        header { text-align: center; padding: 25px; border-bottom: 3px solid var(--neon); background: rgba(0,255,136,0.1); border-radius: 0 0 30px 30px; margin-bottom: 30px; }
+        h1 { font-family: 'Orbitron'; font-size: 1.5rem; color: var(--neon); text-shadow: 0 0 10px var(--neon); }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 15px; max-width: 1600px; margin: 0 auto; }
+        .card { background: var(--card); border: 1px solid #30363d; border-radius: 18px; padding: 15px; transition: 0.3s; }
+        .card:hover { border-color: var(--blue); transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0, 210, 255, 0.2); }
+        
+        h3 { color: var(--blue); font-size: 0.85rem; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+        .badge { background: var(--blue); color: #000; padding: 1px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; }
+
+        input, textarea, select { width: 100%; padding: 10px; margin: 5px 0; border-radius: 8px; border: 1px solid #30363d; background: #161b22; color: white; font-size: 0.8rem; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: linear-gradient(45deg, var(--neon), var(--blue)); color: #000; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: 0.2s; margin-top: 5px; }
+        button:hover { filter: brightness(1.2); letter-spacing: 0.5px; }
+
+        .res { margin-top: 10px; padding: 8px; background: rgba(0,255,136,0.05); border-radius: 6px; color: var(--neon); font-family: 'Orbitron'; font-size: 0.75rem; text-align: center; word-break: break-all; min-height: 20px; border: 1px dashed #30363d; }
+        
+        .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+        canvas { background: white; border-radius: 8px; width: 100%; height: 100px; cursor: crosshair; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>ULTRA-OS 100+ MASTER APPS</h1>
+    <div id="clock" style="color:var(--blue); font-family:'Orbitron'; font-size: 0.9rem; margin-top:5px;"></div>
+</header>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>🔢 Digital Calc <span class="badge">App 1</span></h3>
+        <input type="text" id="cdisp" readonly style="text-align:right; color:var(--neon); font-size:1.1rem;">
+        <div class="calc-grid">
+            <button onclick="cIn('7')">7</button><button onclick="cIn('8')">8</button><button onclick="cIn('9')">9</button><button onclick="cIn('/')">/</button>
+            <button onclick="cIn('4')">4</button><button onclick="cIn('5')">5</button><button onclick="cIn('6')">6</button><button onclick="cIn('*')">*</button>
+            <button onclick="cCl()" style="background:#ff4444; color:white;">C</button><button onclick="cIn('0')">0</button><button onclick="cEx()">=</button><button onclick="cIn('+')">+</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>🆔 QR Creator <span class="badge">App 2</span></h3>
+        <input type="text" id="qr-in" placeholder="Text or URL">
+        <button onclick="genQR()">Create QR</button>
+        <div id="qr-res" style="text-align:center; margin-top:10px;"></div>
+    </div>
+
+    <div class="card">
+        <h3>📊 Barcode Gen <span class="badge">App 3</span></h3>
+        <input type="text" id="bar-in" placeholder="Numbers only (e.g. 12345)">
+        <button onclick="genBar()">Create Barcode</button>
+        <div id="bar-res" style="text-align:center; margin-top:10px;"></div>
+    </div>
+
+    <div class="card">
+        <h3>🎨 Signature Pad <span class="badge">App 4</span></h3>
+        <canvas id="sign"></canvas>
+        <div style="display:flex; gap:5px; margin-top:5px;">
+            <button onclick="sCl()">Clear</button><button onclick="sSv()">Save PNG</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>🔤 Text Studio <span class="badge">App 5</span></h3>
+        <textarea id="tin" rows="2" placeholder="Paste text..."></textarea>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:4px;">
+            <button onclick="tCase('u')">UPPER</button><button onclick="tCase('l')">lower</button>
+            <button onclick="tRev()">Reverse</button><button onclick="tCount()">Analyze</button>
+        </div>
+        <div id="tres" class="res">Stats: --</div>
+    </div>
+
+    <div class="card">
+        <h3>⚖️ BMI Checker <span class="badge">App 6</span></h3>
+        <div style="display:flex; gap:5px;">
+            <input type="number" id="bh" placeholder="H(cm)">
+            <input type="number" id="bw" placeholder="W(kg)">
+        </div>
+        <button onclick="getBMI()">Check BMI</button>
+        <div id="bmi-res" class="res">Result: --</div>
+    </div>
+
+    <div class="card">
+        <h3>📅 Age Finder <span class="badge">App 7</span></h3>
+        <input type="date" id="dob">
+        <button onclick="getAge()">Check Age</button>
+        <div id="age-res" class="res">--</div>
+    </div>
+
+    <div class="card">
+        <h3>🛡️ Pass Generator <span class="badge">App 8</span></h3>
+        <input type="number" id="plen" value="12" title="Length">
+        <button onclick="genPass()">Generate</button>
+        <div id="pass-res" class="res">--</div>
+    </div>
+
+    <div class="card">
+        <h3>📏 Distance Conv <span class="badge">App 9</span></h3>
+        <input type="number" id="kmv" placeholder="Kilometers">
+        <button onclick="kmToMi()">To Miles & Meters</button>
+        <div id="km-res" class="res">--</div>
+    </div>
+
+    <div class="card">
+        <h3>💰 Loan EMI Calc <span class="badge">App 10</span></h3>
+        <input type="number" id="lp" placeholder="Amount">
+        <input type="number" id="li" placeholder="Interest %">
+        <input type="number" id="lt" placeholder="Months">
+        <button onclick="getEMI()">Calculate EMI</button>
+        <div id="emi-res" class="res">--</div>
+    </div>
+
+    <div class="card">
+        <h3>⏱️ Pro Stopwatch <span class="badge">App 11</span></h3>
+        <div id="sw-disp" class="res" style="font-size: 1.2rem;">00:00:00</div>
+        <div style="display:flex; gap:5px;">
+            <button onclick="stSw()">Start</button><button onclick="spSw()">Stop</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>💻 Binary Encoder <span class="badge">App 12</span></h3>
+        <input type="text" id="bi-in" placeholder="Hello">
+        <button onclick="toBi()">Encode Binary</button>
+        <div id="bi-res" class="res">0101...</div>
+    </div>
+
+    <div class="card">
+        <h3>🎨 Color Studio <span class="badge">App 13</span></h3>
+        <input type="color" id="cpick" style="height:50px;">
+        <button onclick="getHex()">Get Hex Code</button>
+        <div id="hex-res" class="res">#000000</div>
+    </div>
+
+    <div class="card">
+        <h3>🏷️ Price Discount <span class="badge">App 14</span></h3>
+        <input type="number" id="mrp" placeholder="Price">
+        <input type="number" id="off" placeholder="Off %">
+        <button onclick="getOff()">Final Price</button>
+        <div id="off-res" class="res">--</div>
+    </div>
+
+    <div class="card">
+        <h3>🔐 Base64 Tool <span class="badge">App 15</span></h3>
+        <input type="text" id="b64-in" placeholder="Text to Secure">
+        <button onclick="to64()">Encode Base64</button>
+        <div id="b64-res" class="res">--</div>
+    </div>
+
+    <div class="card">
+        <h3>📄 JSON Pretty <span class="badge">App 16</span></h3>
+        <textarea id="json-in" rows="2" placeholder='{"key":"val"}'></textarea>
+        <button onclick="fmtJson()">Format JSON</button>
+    </div>
+
+    <div class="card">
+        <h3>🌡️ Temp Converter <span class="badge">App 17</span></h3>
+        <input type="number" id="deg" placeholder="Celsius">
+        <button onclick="toFahr()">To Fahrenheit</button>
+        <div id="deg-res" class="res">-- °F</div>
+    </div>
+
+    <div class="card">
+        <h3>🖥️ System Scan <span class="badge">App 18</span></h3>
+        <button onclick="scanSys()">Get System Info</button>
+        <div id="sys-res" class="res">Ready</div>
+    </div>
+
+    <div class="card">
+        <h3>📉 Percentage <span class="badge">App 19</span></h3>
+        <input type="number" id="p-tot" placeholder="Total Value">
+        <input type="number" id="p-val" placeholder="Value">
+        <button onclick="getPer()">Calculate %</button>
+        <div id="per-res" class="res">--%</div>
+    </div>
+
+    <div class="card">
+        <h3>🎲 Lucky Number <span class="badge">App 20</span></h3>
+        <button onclick="getLuck()">Roll Dice (1-100)</button>
+        <div id="luck-res" class="res">--</div>
+    </div>
+
+</div>
+
+<script>
+    // System Clock
+    setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleString(); }, 1000);
+
+    // 1. Calculator
+    let cd = document.getElementById('cdisp');
+    function cIn(v) { cd.value += v; }
+    function cCl() { cd.value = ''; }
+    function cEx() { try { cd.value = eval(cd.value); } catch { cd.value = 'Error'; } }
+
+    // 2. QR Gen
+    function genQR() { 
+        let v = document.getElementById('qr-in').value;
+        document.getElementById('qr-res').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=${v}&size=90x90" style="background:white; padding:5px; border-radius:5px;">`;
+    }
+
+    // 3. Barcode Gen (NEW)
+    function genBar() {
+        let v = document.getElementById('bar-in').value;
+        document.getElementById('bar-res').innerHTML = `<img src="https://bwipjs-api.metafloor.com/?bcid=code128&text=${v}&scale=2" style="background:white; padding:10px; border-radius:5px; width:150px;">`;
+    }
+
+    // 4. Signature Pad
+    const can = document.getElementById('sign'); const ctx = can.getContext('2d'); let drw = false;
+    can.addEventListener('mousedown', (e)=>{drw=true; ctx.beginPath(); ctx.moveTo(e.offsetX, e.offsetY);});
+    can.addEventListener('mousemove', (e)=>{if(drw){ctx.lineTo(e.offsetX, e.offsetY); ctx.strokeStyle="#000"; ctx.lineWidth=2; ctx.stroke();}});
+    can.addEventListener('mouseup', ()=>drw=false);
+    function sCl() { ctx.clearRect(0,0,can.width,can.height); }
+    function sSv() { let a = document.createElement('a'); a.download='sign.png'; a.href=can.toDataURL(); a.click(); }
+
+    // 5. Text Studio
+    function tCase(m) { let t = document.getElementById('tin'); t.value = (m=='u')? t.value.toUpperCase() : t.value.toLowerCase(); }
+    function tRev() { document.getElementById('tin').value = document.getElementById('tin').value.split('').reverse().join(''); }
+    function tCount() { 
+        let v = document.getElementById('tin').value.trim();
+        document.getElementById('tres').innerText = `Words: ${v?v.split(/\s+/).length:0} | Chars: ${v.length}`;
+    }
+
+    // 6. BMI
+    function getBMI() {
+        let h = document.getElementById('bh').value/100, w = document.getElementById('bw').value;
+        let bmi = (w/(h*h)).toFixed(1);
+        document.getElementById('bmi-res').innerText = "BMI: " + bmi + (bmi<18.5?" (Thin)":bmi<25?" (Normal)":" (Over)");
+    }
+
+    // 7. Age
+    function getAge() {
+        let b = new Date(document.getElementById('dob').value);
+        document.getElementById('age-res').innerText = Math.floor((new Date()-b)/31557600000) + " Years Old";
+    }
+
+    // 8. Password
+    function genPass() {
+        let len = document.getElementById('plen').value;
+        document.getElementById('pass-res').innerText = Math.random().toString(36).slice(-len).toUpperCase() + "!";
+    }
+
+    // 9. Unit
+    function kmToMi() {
+        let v = document.getElementById('kmv').value;
+        document.getElementById('km-res').innerText = (v*0.621).toFixed(2) + " Mi | " + (v*1000) + " M";
+    }
+
+    // 10. EMI
+    function getEMI() {
+        let p = document.getElementById('lp').value, r = document.getElementById('li').value/12/100, n = document.getElementById('lt').value;
+        let emi = (p * r * Math.pow(1+r, n)) / (Math.pow(1+r, n)-1);
+        document.getElementById('emi-res').innerText = "EMI: " + emi.toFixed(2) + " /month";
+    }
+
+    // 11. Stopwatch
+    let st, iv;
+    function stSw() { st = Date.now(); iv = setInterval(() => { 
+        let d = new Date(Date.now() - st);
+        document.getElementById('sw-disp').innerText = d.toISOString().substr(11, 8);
+    }, 1000); }
+    function spSw() { clearInterval(iv); }
+
+    // 12. Binary
+    function toBi() {
+        document.getElementById('bi-res').innerText = document.getElementById('bi-in').value.split('').map(c=>c.charCodeAt(0).toString(2)).join(' ');
+    }
+
+    // 13. Color Picker
+    function getHex() { document.getElementById('hex-res').innerText = document.getElementById('cpick').value.toUpperCase(); }
+
+    // 14. Discount
+    function getOff() {
+        let p = document.getElementById('mrp').value, d = document.getElementById('off').value;
+        document.getElementById('off-res').innerText = "Pay: " + (p - (p*d/100));
+    }
+
+    // 15. Base64
+    function to64() { document.getElementById('b64-res').innerText = btoa(document.getElementById('b64-in').value); }
+
+    // 16. JSON
+    function fmtJson() {
+        try { let obj = JSON.parse(document.getElementById('json-in').value); document.getElementById('json-in').value = JSON.stringify(obj, null, 4); } catch { alert("Invalid JSON"); }
+    }
+
+    // 17. Temp
+    function toFahr() { document.getElementById('deg-res').innerText = (document.getElementById('deg').value * 9/5 + 32).toFixed(1) + " °F"; }
+
+    // 18. Scan System
+    function scanSys() { document.getElementById('sys-res').innerText = `Screen: ${screen.width}x${screen.height} | Platform: ${navigator.platform}`; }
+
+    // 19. Percentage
+    function getPer() { document.getElementById('per-res').innerText = ((document.getElementById('p-val').value / document.getElementById('p-tot').value)*100).toFixed(1) + "%"; }
+
+    // 20. Luck
+    function getLuck() { document.getElementById('luck-res').innerText = Math.floor(Math.random()*100) + 1; }
+
+</script>
+</body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ULTRA-MEGA OS v21.0 | 21 Tools</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
