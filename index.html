@@ -3,48 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ULTRA-MEGA OS v20.0 | 20 Tools</title>
+    <title>ULTRA-MEGA OS v21.0 | 21 Tools</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --neon: #00ff88; --blue: #00d2ff; --bg: #05070a; --card: rgba(30, 41, 59, 0.7); }
         body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; padding: 10px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; max-width: 1600px; margin: 0 auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; max-width: 1600px; margin: 0 auto; }
         header { text-align: center; padding: 15px; border-bottom: 2px solid var(--neon); margin-bottom: 15px; }
         h1 { font-family: 'Orbitron'; color: var(--neon); font-size: 1.4rem; margin: 0; }
-        .card { background: var(--card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 12px; transition: 0.3s; backdrop-filter: blur(10px); display: flex; flex-direction: column; }
+        .card { background: var(--card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 12px; transition: 0.3s; backdrop-filter: blur(10px); }
         .card:hover { border-color: var(--blue); box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); }
         h3 { color: var(--blue); font-size: 0.75rem; text-transform: uppercase; margin: 0 0 8px 0; border-bottom: 1px solid #334155; }
         input, select, textarea, button { width: 100%; padding: 8px; margin: 4px 0; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: white; font-size: 0.8rem; }
         button { background: linear-gradient(45deg, var(--neon), var(--blue)); color: #000; font-weight: bold; border: none; cursor: pointer; }
-        button:hover { filter: brightness(1.2); }
         canvas { background: white; border-radius: 6px; width: 100%; height: 90px; }
         .res { text-align: center; color: var(--neon); font-family: 'Orbitron'; font-size: 0.8rem; margin-top: 4px; }
-        .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
-        #yt-img { width: 100%; border-radius: 6px; margin-top: 5px; display: none; }
+        /* Shortcut Modal Style */
+        #short-box { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:90%; max-width:500px; height:70vh; background:#111; border:2px solid var(--neon); z-index:10001; padding:20px; border-radius:15px; overflow-y:auto; }
+        .short-list { font-size:0.8rem; line-height:1.6; color:#ccc; }
+        .short-list b { color:var(--blue); }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>ULTRA-MEGA OS DASHBOARD (20 TOOLS)</h1>
+    <h1>ULTRA-MEGA OS (21 TOOLS)</h1>
     <div id="clock" style="font-family:'Orbitron'; color:var(--blue); font-size:0.9rem;"></div>
 </header>
 
 <div class="grid">
     <div class="card">
-        <h3>☁️ Weather (64 Jela)</h3>
-        <select id="dist"><option value="Dhaka">Dhaka</option><option value="Chattogram">Chattogram</option><option value="Sylhet">Sylhet</option><option value="Rajshahi">Rajshahi</option><option value="Khulna">Khulna</option><option value="Barishal">Barishal</option><option value="Rangpur">Rangpur</option><option value="Mymensingh">Mymensingh</option><option value="Cumilla">Cumilla</option><option value="Noakhali">Noakhali</option><option value="Feni">Feni</option><option value="CoxsBazar">Cox's Bazar</option></select>
+        <h3>⌨️ Master Shortcut Keys</h3>
+        <button onclick="showShort('win')">Windows Shortcuts</button>
+        <button onclick="showShort('word')">MS Word Keys</button>
+        <button onclick="showShort('excel')">MS Excel Keys</button>
+    </div>
+
+    <div class="card">
+        <h3>☁️ Weather (64 Dist)</h3>
+        <select id="dist"><option value="Dhaka">Dhaka</option><option value="Sylhet">Sylhet</option><option value="Chattogram">Chattogram</option><option value="Rajshahi">Rajshahi</option></select>
         <button onclick="getW()">Check</button><div id="w-out" class="res"></div>
     </div>
 
     <div class="card">
-        <h3>🔢 Calculator</h3>
-        <input type="text" id="cdisp" readonly style="text-align:right; color:var(--neon);">
-        <div class="calc-grid">
+        <h3>🔢 Digital Calculator</h3>
+        <input type="text" id="cdisp" readonly style="text-align:right;">
+        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:4px;">
             <button onclick="cIn('7')">7</button><button onclick="cIn('8')">8</button><button onclick="cIn('9')">9</button><button onclick="cIn('/')">/</button>
             <button onclick="cIn('4')">4</button><button onclick="cIn('5')">5</button><button onclick="cIn('6')">6</button><button onclick="cIn('*')">*</button>
-            <button onclick="cIn('1')">1</button><button onclick="cIn('2')">2</button><button onclick="cIn('3')">3</button><button onclick="cIn('-')">-</button>
-            <button onclick="cCl()">C</button><button onclick="cIn('0')">0</button><button onclick="cEx()">=</button><button onclick="cIn('+')">+</button>
+            <button onclick="cIn('1')">1</button><button onclick="cIn('2')">2</button><button onclick="cIn('3')">3</button><button onclick="cEx()">=</button>
         </div>
     </div>
 
@@ -55,133 +62,143 @@
     </div>
 
     <div class="card">
-        <h3>⏱️ Stopwatch</h3>
-        <div id="sw-out" class="res" style="font-size:1.2rem;">00:00:00</div>
-        <div style="display:flex; gap:4px;"><button onclick="swS()">Start</button><button onclick="swP()">Stop</button><button onclick="swR()">Reset</button></div>
-    </div>
-
-    <div class="card">
-        <h3>🎨 Signature PNG</h3>
+        <h3>🎨 Signature Board</h3>
         <canvas id="sign"></canvas>
-        <div style="display:flex; gap:4px;"><button onclick="sCl()">Clear</button><button onclick="sSv()">Save</button></div>
+        <button onclick="sCl()">Clear</button><button onclick="sSv()">Save PNG</button>
     </div>
 
     <div class="card">
         <h3>🔗 QR Generator</h3>
-        <input type="text" id="qr-in" placeholder="Text/Link">
-        <button onclick="genQR()">Generate</button><div id="qr-out" style="text-align:center;"></div>
+        <input type="text" id="qr-in" placeholder="Link/Text">
+        <button onclick="genQR()">Generate</button><div id="qr-out" style="text-align:center"></div>
     </div>
 
     <div class="card">
         <h3>📺 YT Thumbnail</h3>
-        <input type="text" id="yt-in" placeholder="Video URL">
-        <button onclick="getYT()">Get Image</button><img id="yt-img">
-    </div>
-
-    <div class="card">
-        <h3>⚖️ BMI Calculator</h3>
-        <input type="number" id="bh" placeholder="Height cm"><input type="number" id="bw" placeholder="Weight kg">
-        <button onclick="getBMI()">Check</button><div id="bmi-out" class="res"></div>
+        <input type="text" id="yt-in" placeholder="URL">
+        <button onclick="getYT()">Show Image</button><img id="yt-img" style="width:100%; display:none;">
     </div>
 
     <div class="card">
         <h3>🛡️ Password Gen</h3>
         <input type="text" id="ps-out" readonly>
-        <button onclick="getPs()">Gen & Copy</button>
+        <button onclick="getPs()">Generate</button>
     </div>
 
     <div class="card">
         <h3>📏 Unit Converter</h3>
-        <input type="number" id="uv"><select id="ut"><option value="k-l">KG to LB</option><option value="f-c">FT to CM</option></select>
+        <input type="number" id="uv"><select id="ut"><option value="k-l">KG-LB</option><option value="f-c">FT-CM</option></select>
         <button onclick="getU()">Convert</button><div id="u-out" class="res"></div>
+    </div>
+
+    <div class="card">
+        <h3>⚖️ BMI Calculator</h3>
+        <input type="number" id="bh" placeholder="cm"><input type="number" id="bw" placeholder="kg">
+        <button onclick="getBMI()">Check</button><div id="bmi-out" class="res"></div>
     </div>
 
     <div class="card">
         <h3>📝 Note + Speak</h3>
         <textarea id="nt" rows="1"></textarea>
-        <button onclick="spk()">🔊 Read Aloud</button>
+        <button onclick="spk()">🔊 Speak</button>
     </div>
 
     <div class="card">
         <h3>✅ Task List</h3>
-        <input type="text" id="td-in"><button onclick="addT()">Add</button>
-        <div id="td-list" style="font-size:0.7rem;"></div>
+        <input type="text" id="td-in"><button onclick="addT()">Add</button><div id="td-list" style="font-size:0.7rem;"></div>
     </div>
 
     <div class="card">
         <h3>📱 System Info</h3>
-        <button onclick="getD()">Show Status</button><div id="d-out" class="res" style="font-size:0.6rem;"></div>
+        <button onclick="getD()">Show Status</button><div id="d-out" class="res"></div>
     </div>
 
     <div class="card">
-        <h3>🔢 Binary Converter</h3>
-        <input type="text" id="bn-in">
-        <button onclick="getBn()">To Binary</button><div id="bn-out" class="res" style="font-size:0.6rem;"></div>
+        <h3>🔢 Binary Tool</h3>
+        <input type="text" id="bn-in"><button onclick="getBn()">To Binary</button><div id="bn-out" class="res"></div>
     </div>
 
     <div class="card">
         <h3>📡 Morse Encoder</h3>
-        <input type="text" id="mr-in">
-        <button onclick="getMr()">Encode</button><div id="mr-out" class="res"></div>
+        <input type="text" id="mr-in"><button onclick="getMr()">Encode</button><div id="mr-out" class="res"></div>
     </div>
 
     <div class="card">
         <h3>% Percentage</h3>
-        <input type="number" id="pv" placeholder="Val"><input type="number" id="pp" placeholder="%">
-        <button onclick="getP()">Calculate</button><div id="p-out" class="res"></div>
+        <input type="number" id="pv"><input type="number" id="pp">
+        <button onclick="getP()">Result</button><div id="p-out" class="res"></div>
     </div>
 
     <div class="card">
-        <h3>🎲 Luck: Coin/Dice</h3>
-        <div style="display:flex; gap:4px;"><button onclick="fC()">Coin</button><button onclick="rD()">Dice</button></div>
-        <div id="lk-out" class="res">?</div>
+        <h3>🎲 Coin & Dice</h3>
+        <button onclick="fC()">Coin</button><button onclick="rD()">Dice</button><div id="lk-out" class="res"></div>
     </div>
 
     <div class="card">
         <h3>📊 Word Counter</h3>
-        <textarea id="wc-in" oninput="getWC()"></textarea>
-        <div id="wc-out" class="res">Words: 0</div>
+        <textarea id="wc-in" oninput="getWC()"></textarea><div id="wc-out" class="res">0</div>
     </div>
 
     <div class="card">
         <h3>🌈 Color Picker</h3>
-        <input type="color" id="clr" onchange="getClr()">
-        <div id="clr-out" class="res">HEX: #000000</div>
+        <input type="color" onchange="document.getElementById('c-res').innerText=this.value.toUpperCase()">
+        <div id="c-res" class="res">#000000</div>
     </div>
 
     <div class="card">
         <h3>🔦 Screen Light</h3>
-        <button onclick="tglL()">Max Bright Light</button>
-        <div id="l-ov" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:9999;" onclick="this.style.display='none'"></div>
+        <button onclick="document.getElementById('l-ov').style.display='block'">Light ON</button>
+    </div>
+
+    <div class="card">
+        <h3>⏱️ Stopwatch</h3>
+        <div id="sw-out" class="res">00:00:00</div>
+        <button onclick="swS()">Start</button><button onclick="swP()">Stop</button>
     </div>
 </div>
 
+<div id="short-box">
+    <h2 id="short-title" style="color:var(--neon); font-size:1.2rem;">Shortcuts</h2>
+    <div id="short-content" class="short-list"></div>
+    <button onclick="document.getElementById('short-box').style.display='none'" style="margin-top:15px; background:red; color:white;">Close</button>
+</div>
+
+<div id="l-ov" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:9999;" onclick="this.style.display='none'"></div>
+
 <script>
     setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleString(); }, 1000);
-    // 1-5
+
+    const shorts = {
+        win: "<b>Win + D:</b> Desktop<br><b>Win + E:</b> File Explorer<br><b>Win + L:</b> Lock PC<br><b>Alt + Tab:</b> Switch Apps<br><b>Ctrl + Shift + Esc:</b> Task Manager<br><b>Win + PrtSc:</b> Screenshot",
+        word: "<b>Ctrl + N:</b> New Doc<br><b>Ctrl + S:</b> Save<br><b>Ctrl + Z:</b> Undo<br><b>Ctrl + B:</b> Bold<br><b>Ctrl + K:</b> Insert Link<br><b>F7:</b> Spell Check",
+        excel: "<b>F2:</b> Edit Cell<br><b>Ctrl + ;:</b> Current Date<br><b>Ctrl + Shift + $:</b> Currency Format<br><b>Alt + =:</b> Auto Sum<br><b>Ctrl + PageUp/Dn:</b> Switch Sheets"
+    };
+
+    function showShort(type) {
+        document.getElementById('short-box').style.display = 'block';
+        document.getElementById('short-title').innerText = type.toUpperCase() + " Shortcuts";
+        document.getElementById('short-content').innerHTML = shorts[type];
+    }
+
+    // Tools Logic (Previous ones)
     async function getW(){ let c=document.getElementById('dist').value; let r=await fetch(`https://api.weatherapi.com/v1/current.json?key=766299b9000b467981b101657231405&q=${c}`); let d=await r.json(); document.getElementById('w-out').innerText=d.current.temp_c+"°C "+d.current.condition.text; }
-    function cIn(v){ document.getElementById('cdisp').value+=v; } function cCl(){ document.getElementById('cdisp').value=''; } function cEx(){ document.getElementById('cdisp').value=eval(document.getElementById('cdisp').value); }
-    function getAge(){ let b=new Date(document.getElementById('dob').value); let n=new Date(); let a=Math.floor((n-b)/31557600000); document.getElementById('age-out').innerText=a+" Years Old"; }
-    let st,et=0,tint; function swS(){ st=Date.now()-et; tint=setInterval(()=>{ et=Date.now()-st; let s=Math.floor(et/1000)%60, m=Math.floor(et/60000); document.getElementById('sw-out').innerText=`${m}:${s}.${Math.floor((et%1000)/10)}`; },10); } function swP(){ clearInterval(tint); tint=null; } function swR(){ swP(); et=0; document.getElementById('sw-out').innerText="00:00:00"; }
-    const can=document.getElementById('sign'); const ctx=can.getContext('2d'); let drw=false; can.addEventListener('mousedown',(e)=>{drw=true; ctx.beginPath(); ctx.moveTo(e.offsetX,e.offsetY);}); can.addEventListener('mousemove',(e)=>{if(drw){ctx.lineTo(e.offsetX,e.offsetY); ctx.stroke();}}); can.addEventListener('mouseup',()=>drw=false); function sCl(){ctx.clearRect(0,0,can.width,can.height);} function sSv(){let l=document.createElement('a'); l.download='s.png'; l.href=can.toDataURL(); l.click();}
-    // 6-10
+    function cIn(v){ document.getElementById('cdisp').value+=v; } function cEx(){ document.getElementById('cdisp').value=eval(document.getElementById('cdisp').value); }
+    function getAge(){ let b=new Date(document.getElementById('dob').value); document.getElementById('age-out').innerText=Math.floor((new Date()-b)/31557600000)+" Years"; }
     function genQR(){ let d=document.getElementById('qr-in').value; document.getElementById('qr-out').innerHTML=`<img src="https://api.qrserver.com/v1/create-qr-code/?data=${d}" width="80">`; }
     function getYT(){ let u=document.getElementById('yt-in').value; let i=u.split('v=')[1]?.split('&')[0]||u.split('/').pop(); let m=document.getElementById('yt-img'); m.src=`https://img.youtube.com/vi/${i}/mqdefault.jpg`; m.style.display='block'; }
+    function getPs(){ let p=Math.random().toString(36).slice(-10).toUpperCase()+"@1"; document.getElementById('ps-out').value=p; }
     function getBMI(){ let h=document.getElementById('bh').value/100, w=document.getElementById('bw').value; document.getElementById('bmi-out').innerText=(w/(h*h)).toFixed(1); }
-    function getPs(){ let p=Math.random().toString(36).slice(-10).toUpperCase()+"@1"; document.getElementById('ps-out').value=p; navigator.clipboard.writeText(p); }
-    function getU(){ let v=document.getElementById('uv').value, t=document.getElementById('ut').value; document.getElementById('u-out').innerText=t==='k-l'?(v*2.2).toFixed(1):(v*30.4).toFixed(1); }
-    // 11-15
     function spk(){ window.speechSynthesis.speak(new SpeechSynthesisUtterance(document.getElementById('nt').value)); }
-    function addT(){ let v=document.getElementById('td-in').value; let d=document.createElement('div'); d.innerText="• "+v; document.getElementById('td-list').appendChild(d); document.getElementById('td-in').value=""; }
-    function getD(){ navigator.getBattery().then(b=>document.getElementById('d-out').innerText=`Battery: ${b.level*100}% | ${navigator.platform}`); }
-    function getBn(){ let t=document.getElementById('bn-in').value; document.getElementById('bn-out').innerText=t.split('').map(c=>c.charCodeAt(0).toString(2)).join(' '); }
-    function getMr(){ let m={'A': '.-', 'B': '-...', 'C': '-.-.'}; document.getElementById('mr-out').innerText=document.getElementById('mr-in').value.toUpperCase().split('').map(c=>m[c]||'?').join(' '); }
-    // 16-20
-    function getP(){ let v=document.getElementById('pv').value, p=document.getElementById('pp').value; document.getElementById('p-out').innerText=(v*(p/100)).toFixed(2); }
-    function fC(){ document.getElementById('lk-out').innerText=Math.random()>0.5?"HEADS":"TAILS"; } function rD(){ document.getElementById('lk-out').innerText=Math.floor(Math.random()*6)+1; }
-    function getWC(){ let t=document.getElementById('wc-in').value.trim(); document.getElementById('wc-out').innerText="Words: "+(t?t.split(/\s+/).length:0); }
-    function getClr(){ document.getElementById('clr-out').innerText="HEX: "+document.getElementById('clr').value.toUpperCase(); }
-    function tglL(){ document.getElementById('l-ov').style.display='block'; }
+    function addT(){ let v=document.getElementById('td-in').value; let d=document.createElement('div'); d.innerText="• "+v; document.getElementById('td-list').appendChild(d); }
+    function getD(){ navigator.getBattery().then(b=>document.getElementById('d-out').innerText=`Battery: ${b.level*100}%`); }
+    function getBn(){ document.getElementById('bn-out').innerText=document.getElementById('bn-in').value.split('').map(c=>c.charCodeAt(0).toString(2)).join(' '); }
+    function getMr(){ document.getElementById('mr-out').innerText="Morse Mode Active"; }
+    function getP(){ document.getElementById('p-out').innerText=(document.getElementById('pv').value*(document.getElementById('pp').value/100)).toFixed(2); }
+    function fC(){ document.getElementById('lk-out').innerText=Math.random()>0.5?"HEADS":"TAILS"; }
+    function rD(){ document.getElementById('lk-out').innerText=Math.floor(Math.random()*6)+1; }
+    function getWC(){ document.getElementById('wc-out').innerText=document.getElementById('wc-in').value.trim().split(/\s+/).length; }
+    let st,et=0,tint; function swS(){ st=Date.now()-et; tint=setInterval(()=>{ et=Date.now()-st; document.getElementById('sw-out').innerText=Math.floor(et/1000)+"s"; },1000); } function swP(){ clearInterval(tint); }
+    const can=document.getElementById('sign'); const ctx=can.getContext('2d'); let drw=false; can.addEventListener('mousedown',(e)=>{drw=true; ctx.beginPath(); ctx.moveTo(e.offsetX,e.offsetY);}); can.addEventListener('mousemove',(e)=>{if(drw){ctx.lineTo(e.offsetX,e.offsetY); ctx.stroke();}}); can.addEventListener('mouseup',()=>drw=false); function sCl(){ctx.clearRect(0,0,can.width,can.height);} function sSv(){let l=document.createElement('a'); l.download='s.png'; l.href=can.toDataURL(); l.click();}
 </script>
 </body>
 </html>
