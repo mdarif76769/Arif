@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech-X | Premium Gadget Store</title>
+    <style>
+        /* ১. গ্লোবাল স্টাইল */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #f8f9fa; }
+
+        /* ২. নেভিগেশন বার এবং লোগো */
+        nav {
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #27ae60;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid #27ae60;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: #27ae60; }
+
+        /* ৩. হিরো সেকশন (ব্যানার) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        /* ৪. প্রোডাক্ট গ্রিড আপগ্রেড */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.4s;
+            position: relative;
+        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+        /* ব্যাজ (যেমন: Discount) */
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+
+        .product-info { padding: 20px; text-align: center; }
+        .product-info h3 { font-size: 18px; margin-bottom: 10px; color: #2c3e50; }
+        .price { font-size: 20px; color: #27ae60; font-weight: 700; margin-bottom: 15px; }
+
+        /* আপগ্রেডেড বাটন */
+        .buy-btn {
+            display: block;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .buy-btn:hover { background: #27ae60; }
+    </style>
+</head>
+<body>
+
+    <!-- নেভিগেশন বার -->
+    <nav>
+        <div class="logo">TECH-X</div> <!-- কাস্টম টেক্সট লোগো -->
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <!-- হিরো ব্যানার -->
+    <div class="hero">
+        <h1>Welcome to Tech-X Store</h1>
+        <p>নতুন প্রজন্মের স্মার্ট গ্যাজেট এখন আপনার হাতের মুঠোয়</p>
+    </div>
+
+    <!-- মেইন কন্টেন্ট -->
+    <div class="container">
+        <div class="product-grid">
+            
+            <!-- প্রোডাক্ট ১ -->
+            <div class="product-card">
+                <div class="badge">10% OFF</div>
+                <div style="height: 200px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 40px;">⌚</div>
+                <div class="product-info">
+                    <h3>Smart Watch Ultra</h3>
+                    <p class="price">৳ ৪,৯৯৯</p>
+                    <a href="products/watch.html" class="buy-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ২ -->
+            <div class="product-card">
+                <div style="height: 200px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 40px;">🎧</div>
+                <div class="product-info">
+                    <h3>Noise Cancel Headphone</h3>
+                    <p class="price">৳ ৩,২০০</p>
+                    <a href="products/headphone.html" class="buy-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ৩ -->
+            <div class="product-card">
+                <div class="badge">New Arrival</div>
+                <div style="height: 200px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 40px;">⌨️</div>
+                <div class="product-info">
+                    <h3>RGB Mechanical Keyboard</h3>
+                    <p class="price">৳ ৬,৫০০</p>
+                    <a href="products/keyboard.html" class="buy-btn">View Details</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
