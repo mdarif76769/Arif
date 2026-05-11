@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 350px;
+            text-align: center;
+        }
+        h2 { color: #333; }
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        /* বাটন স্টাইল */
+        .login-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+        .footer-link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .footer-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Member Login</h2>
+        
+        <!-- action নির্দেশ করছে লগইন সফল হলে কোন ফাইলে যাবে -->
+        <!-- যদি ড্যাশবোর্ড ফাইলটি 'dashboard' ফোল্ডারের ভেতর থাকে তবে লিখবেন: dashboard/welcome.html -->
+        <form action="welcome.html" method="GET">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            
+            <button type="submit" class="login-btn">Login Now</button>
+        </form>
+
+        <div class="footer-link">
+            <p>Don't have an account? <a href="signup.html">Create Account</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
