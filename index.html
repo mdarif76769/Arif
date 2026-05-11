@@ -21,6 +21,8 @@
         input, textarea, select { width: 100%; padding: 10px; margin: 5px 0; border-radius: 8px; border: 1px solid #30363d; background: #161b22; color: white; font-size: 0.8rem; box-sizing: border-box; }
         button { width: 100%; padding: 10px; background: linear-gradient(45deg, var(--neon), var(--blue)); color: #000; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: 0.2s; margin-top: 5px; }
         button:hover { filter: brightness(1.2); letter-spacing: 0.5px; }
+        
+
 
         .res { margin-top: 10px; padding: 8px; background: rgba(0,255,136,0.05); border-radius: 6px; color: var(--neon); font-family: 'Orbitron'; font-size: 0.75rem; text-align: center; word-break: break-all; min-height: 20px; border: 1px dashed #30363d; }
         
@@ -41,6 +43,20 @@
         <h3>🔢 Digital Calc <span class="badge">App 1</span></h3>
         <input type="text" id="cdisp" readonly style="text-align:right; color:var(--neon); font-size:1.1rem;">
         <div class="calc-grid">
+            <a href="deshbord.html" class="my-button">NEXT</a>
+<a href="next.html" class="my-button">NEXT</a>
+<style>
+.my-button {
+    background-color: #4CAF50;
+    color: white;             
+    padding: 10px 20px;       
+    text-decoration: none;     
+    display: inline-block;
+    border-radius: 5px; 
+    border: none;}
+.my-button:hover {
+    background-color: #45a049;}
+</style>
             <button onclick="cIn('7')">7</button><button onclick="cIn('8')">8</button><button onclick="cIn('9')">9</button><button onclick="cIn('/')">/</button>
             <button onclick="cIn('4')">4</button><button onclick="cIn('5')">5</button><button onclick="cIn('6')">6</button><button onclick="cIn('*')">*</button>
             <button onclick="cCl()" style="background:#ff4444; color:white;">C</button><button onclick="cIn('0')">0</button><button onclick="cEx()">=</button><button onclick="cIn('+')">+</button>
