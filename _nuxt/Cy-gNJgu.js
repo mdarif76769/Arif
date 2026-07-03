@@ -1,0 +1,1 @@
+import{aa as i,K as n,P as r}from"./B4V_E2Vg.js";const u=i(e=>{const a=n("token");if(a.value&&(e==null?void 0:e.name)==="login")return r("/profile");if(a.value&&(e==null?void 0:e.name)==="register")return r("/profile")});export{u as default};
