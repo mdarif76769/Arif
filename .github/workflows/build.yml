@@ -43,6 +43,11 @@ jobs:
             sed -i "s#https://[^\"[:space:]]*#$WEB_URL#g" "$MAIN_FILE"
           fi
 
+      - name: Upgrade Gradle Version for Java 17 Compatibility
+        run: |
+          # গ্রেডল র‍্যাপার ভার্সন আপডেট করে 7.5 এ উন্নীত করা হলো যা Java 17 সমর্থন করে
+          ./gradlew wrapper --gradle-version 7.5
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
