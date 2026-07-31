@@ -24,6 +24,26 @@ jobs:
         with:
           accept-android-sdk-licenses: true
 
+      - name: Update Project Configuration from Dispatch
+        run: |
+          # অ্যাপের নাম আপডেট (strings.xml)
+          APP_NAME="${{ github.event.client_payload.app_name }}"
+          if [ ! -z "$APP_NAME" ]; then
+            sed -i "s/<string name=\"app_name\">.*<\/string>/<string name=\"app_name\">$APP_NAME<\/string>/" app/src/main/res/values/strings.xml
+          fi
+
+          # প্যাকেজ নেম আপডেট (build.gradle)
+          PKG_NAME="${{ github.event.client_payload.package_name }}"
+          if [ ! -z "$PKG_NAME" ]; then
+            sed -i "s/applicationId \".*\"/applicationId \"$PKG_NAME\"/" app/build.gradle
+          fi
+
+          # ওয়েব ইউআরএল আপডেট (MainActivity.kt বা কনফিগারেশন ফাইল)
+          WEB_URL="${{ github.event.client_payload.web_url }}"
+          if [ ! -z "$WEB_URL" ]; then
+            sed -i "s#https://mdarif76769.github.io/firebase_controller/#$WEB_URL#g" app/src/main/java/bd/supper/MainActivity.kt
+          fi
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
