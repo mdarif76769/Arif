@@ -28,20 +28,21 @@ jobs:
         run: |
           # অ্যাপের নাম আপডেট (strings.xml)
           APP_NAME="${{ github.event.client_payload.app_name }}"
-          if [ ! -z "$APP_NAME" ]; then
+          if [ ! -z "$APP_NAME" ] && [ -f "app/src/main/res/values/strings.xml" ]; then
             sed -i "s/<string name=\"app_name\">.*<\/string>/<string name=\"app_name\">$APP_NAME<\/string>/" app/src/main/res/values/strings.xml
           fi
 
           # প্যাকেজ নেম আপডেট (build.gradle)
           PKG_NAME="${{ github.event.client_payload.package_name }}"
-          if [ ! -z "$PKG_NAME" ]; then
+          if [ ! -z "$PKG_NAME" ] && [ -f "app/build.gradle" ]; then
             sed -i "s/applicationId \".*\"/applicationId \"$PKG_NAME\"/" app/build.gradle
           fi
 
-          # ওয়েব ইউআরএল আপডেট (MainActivity.kt বা কনফিগারেশন ফাইল)
+          # সঠিক পাথ থেকে MainActivity.kt খুঁজে ওয়েব ইউআরএল আপডেট
           WEB_URL="${{ github.event.client_payload.web_url }}"
-          if [ ! -z "$WEB_URL" ]; then
-            sed -i "s#https://mdarif76769.github.io/firebase_controller/#$WEB_URL#g" app/src/main/java/bd/supper/MainActivity.kt
+          MAIN_FILE=$(find app/src/main/java -name "MainActivity.kt" | head -n 1)
+          if [ ! -z "$WEB_URL" ] && [ ! -z "$MAIN_FILE" ]; then
+            sed -i "s#https://[^\"[:space:]]*#$WEB_URL#g" "$MAIN_FILE"
           fi
 
       - name: Grant execute permission for gradlew
